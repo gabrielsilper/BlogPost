@@ -1,5 +1,6 @@
 package com.github.gabrielsilper.BlogPost.controllers;
 
+import com.github.gabrielsilper.BlogPost.models.dtos.PostDto;
 import com.github.gabrielsilper.BlogPost.models.entities.Post;
 import com.github.gabrielsilper.BlogPost.services.PostService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,11 @@ public class PostController {
     }
 
     @GetMapping
-    public List<Post> getAllPosts(){
-        return this.postService.getAll();
+    public List<PostDto> getAllPosts(){
+        return this.postService
+                .getAll()
+                .stream()
+                .map(Post::toDto)
+                .toList();
     }
 }

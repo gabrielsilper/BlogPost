@@ -1,8 +1,7 @@
 package com.github.gabrielsilper.BlogPost.models.entities;
 
+import com.github.gabrielsilper.BlogPost.models.dtos.PostDto;
 import jakarta.persistence.*;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -113,5 +112,9 @@ public class Post {
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
+    }
+
+    public PostDto toDto(){
+        return new PostDto(id, title, text, user.getId(), createdAt, updatedAt);
     }
 }
