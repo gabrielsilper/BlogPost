@@ -1,5 +1,6 @@
 package com.github.gabrielsilper.BlogPost.services;
 
+import com.github.gabrielsilper.BlogPost.exceptions.UserNotFoundException;
 import com.github.gabrielsilper.BlogPost.models.dtos.UserCreationDto;
 import com.github.gabrielsilper.BlogPost.models.entities.User;
 import com.github.gabrielsilper.BlogPost.repositories.UserRepository;
@@ -23,5 +24,9 @@ public class UserService {
 
     public List<User> getAll() {
         return this.userRepository.findAll();
+    }
+
+    public User getById(long id) throws UserNotFoundException {
+        return this.userRepository.findById(id).orElseThrow(UserNotFoundException::new);
     }
 }
