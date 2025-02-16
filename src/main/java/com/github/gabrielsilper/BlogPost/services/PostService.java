@@ -4,9 +4,11 @@ import com.github.gabrielsilper.BlogPost.models.dtos.PostCreationDto;
 import com.github.gabrielsilper.BlogPost.models.entities.Post;
 import com.github.gabrielsilper.BlogPost.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class PostService {
     private final PostRepository postRepository;
 
