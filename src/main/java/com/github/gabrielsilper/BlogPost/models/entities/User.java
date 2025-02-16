@@ -1,5 +1,6 @@
 package com.github.gabrielsilper.BlogPost.models.entities;
 
+import com.github.gabrielsilper.BlogPost.models.dtos.UserDto;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -81,5 +82,9 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    public UserDto toDto (){
+        return new UserDto(this.id, this.username);
     }
 }
