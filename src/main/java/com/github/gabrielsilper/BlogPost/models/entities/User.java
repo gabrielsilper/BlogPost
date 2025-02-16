@@ -21,7 +21,8 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    public User(){}
+    public User() {
+    }
 
     public User(Long id, String username, String email, String password) {
         this.id = id;
@@ -84,7 +85,7 @@ public class User {
                 '}';
     }
 
-    public UserDto toDto (){
+    public UserDto toDto() {
         return new UserDto(this.id, this.username);
     }
 }
