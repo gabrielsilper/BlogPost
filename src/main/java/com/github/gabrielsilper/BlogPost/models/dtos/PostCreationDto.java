@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 public record PostCreationDto(String title, String text) {
     public Post toEntity(){
-        return new Post(null, title, text, null, LocalDateTime.now(), LocalDateTime.now());
+        LocalDateTime now = LocalDateTime.now();
+        return new Post(null, title, text, null, now, now);
     }
 }
