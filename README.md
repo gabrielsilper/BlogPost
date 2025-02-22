@@ -61,3 +61,40 @@ Login:
      - O sistema deve retornar uma mensagem de erro caso o e-mail já esteja cadastrado.
      - O sistema deve retornar uma mensagem de erro caso o e-mail seja inválido.
      - O sistema deve retornar uma mensagem de erro caso a nova senha tenha menos de 8 caracteres;
+
+## Entidades:
+
+------------------------
+
+### User
+Campos:
+ - id: long
+ - username: string
+ - email: string
+ - password: string
+ - createdAt: LocalDateTime
+ - updatedAt: LocalDateTime
+
+### Post
+Campos:
+ - id: long
+ - title: string
+ - content: string
+ - user: User - Relacionamento N:1
+ - createdAt: LocalDateTime
+ - updatedAt: LocalDateTime
+
+### Comment
+Campos:
+ - id: long
+ - content: string
+ - user: User - Relacionamento N:1
+ - post: Post - Relacionamento N:1
+ - createdAt: LocalDateTime
+ - updatedAt: LocalDateTime
+
+### Like
+Campos: 
+ - user: User
+ - post: Post
+Vai ser uma entidade que vai ter um relacionamento N:N entre User e Post. Usar tabela intermediária para armazenar os likes.
