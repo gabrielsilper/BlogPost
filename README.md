@@ -2,7 +2,7 @@
 
 Levantando requisitos para o backend do BlogPost.
 
-***Aqui estou exercitando o levantamento de requisitos para um sistema de blog. Eu com o tempo vou levar todos os pontos, os requisitos funcionais, as estórias de usuários e os critérios de aceitação.*  
+***Aqui estou exercitando o levantamento de requisitos para um sistema de blog. Eu com o tempo vou levar todos os pontos, os requisitos funcionais, as estórias de usuários e os critérios de aceitação.*** 
 
 Manter usuário:
  - Cadastrar usuário;
@@ -35,7 +35,7 @@ Login:
 
 ------------------------
 
-**Quero levantar esses pontos, pois assim consigo saber o que devo usar como base para criar os testes de integração e unitários.**
+***Quero levantar esses pontos, pois assim consigo saber o que devo usar como base para criar os testes de integração e unitários.***
 
  - RF01 - Cadastrar usuário;
    - Descrição: O sistema deve permitir o cadastro de um usuário com username, e-mail e senha;
@@ -62,11 +62,16 @@ Login:
      - O sistema deve retornar uma mensagem de erro caso o e-mail seja inválido.
      - O sistema deve retornar uma mensagem de erro caso a nova senha tenha menos de 8 caracteres;
 
-## Entidades:
+***Vou continuar levantando os requisitos funcionais com o tempo, pois acredito que sempre vai tá em construção, isso a medida que as ideias forem surgindo e quando tiver tempo para isso.***
+
+## Entidades/Modelos:
 
 ------------------------
 
 ### User
+Descrição: 
+ - Modelo que vai armazenar os usuários do blog.
+
 Campos:
  - id: long
  - username: string
@@ -76,6 +81,9 @@ Campos:
  - updatedAt: LocalDateTime
 
 ### Post
+Descrição: 
+ - Modelo que vai armazenar os posts do blog.
+
 Campos:
  - id: long
  - title: string
@@ -85,6 +93,9 @@ Campos:
  - updatedAt: LocalDateTime
 
 ### Comment
+Descrição: 
+ - Modelo que vai armazenar os comentários dos posts.
+
 Campos:
  - id: long
  - content: string
@@ -94,7 +105,11 @@ Campos:
  - updatedAt: LocalDateTime
 
 ### Like
-Campos: 
+Descrição: 
+ - Modelo que vai armazenar os likes dos posts.
+ - Vai ser uma entidade que vai ter um relacionamento N:N entre User e Post. Usar tabela intermediária para armazenar os likes.
+
+Campos:
  - user: User
  - post: Post
-Vai ser uma entidade que vai ter um relacionamento N:N entre User e Post. Usar tabela intermediária para armazenar os likes.
+
