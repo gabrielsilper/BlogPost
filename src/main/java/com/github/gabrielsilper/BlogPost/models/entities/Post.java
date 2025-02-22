@@ -18,7 +18,7 @@ public class Post {
     private String title;
 
     @Column(nullable = false, length = 2000)
-    private String text;
+    private String content;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -33,10 +33,10 @@ public class Post {
     public Post() {
     }
 
-    public Post(Long id, String title, String text, User user, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Post(Long id, String title, String content, User user, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.title = title;
-        this.text = text;
+        this.content = content;
         this.user = user;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -58,12 +58,12 @@ public class Post {
         this.title = title;
     }
 
-    public String getText() {
-        return text;
+    public String getContent() {
+        return content;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public User getUser() {
@@ -94,20 +94,20 @@ public class Post {
     public boolean equals(Object object) {
         if (object == null || getClass() != object.getClass()) return false;
         Post post = (Post) object;
-        return Objects.equals(id, post.id) && Objects.equals(title, post.title) && Objects.equals(text, post.text) && Objects.equals(user, post.user) && Objects.equals(createdAt, post.createdAt) && Objects.equals(updatedAt, post.updatedAt);
+        return Objects.equals(id, post.id) && Objects.equals(title, post.title) && Objects.equals(content, post.content) && Objects.equals(user, post.user) && Objects.equals(createdAt, post.createdAt) && Objects.equals(updatedAt, post.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, text, user, createdAt, updatedAt);
+        return Objects.hash(id, title, content, user, createdAt, updatedAt);
     }
 
     @Override
     public String toString() {
         return "Post{" +
                 "id=" + id +
-                ", title='" + title + '\'' +
-                ", text='" + text + '\'' +
+                ", content='" + title + '\'' +
+                ", content='" + content + '\'' +
                 ", user=" + user +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
@@ -115,6 +115,6 @@ public class Post {
     }
 
     public PostDto toDto(){
-        return new PostDto(id, title, text, user.getId(), createdAt, updatedAt);
+        return new PostDto(id, title, content, user.getId(), createdAt, updatedAt);
     }
 }
