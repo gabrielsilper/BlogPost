@@ -4,6 +4,7 @@ import com.github.gabrielsilper.BlogPost.models.dtos.UserDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 import java.util.Objects;
@@ -17,6 +18,7 @@ public class User {
 
     @NotBlank(message = "is required")
     @Size(min = 3, max = 25)
+    @Pattern(regexp = "\\S+", message = "cannot contain whitespace")
     @Column(unique = true, nullable = false, length = 25)
     private String username;
 
