@@ -8,6 +8,7 @@ import com.github.gabrielsilper.BlogPost.models.dtos.UserDto;
 import com.github.gabrielsilper.BlogPost.models.entities.User;
 import com.github.gabrielsilper.BlogPost.services.PostService;
 import com.github.gabrielsilper.BlogPost.services.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +38,7 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDto createUser(@RequestBody UserCreationDto newUser) {
+    public UserDto createUser(@RequestBody @Valid UserCreationDto newUser) {
         return this.userService.create(newUser).toDto();
     }
 

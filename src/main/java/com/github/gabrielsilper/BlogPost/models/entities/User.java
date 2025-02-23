@@ -2,6 +2,9 @@ package com.github.gabrielsilper.BlogPost.models.entities;
 
 import com.github.gabrielsilper.BlogPost.models.dtos.UserDto;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.util.Objects;
 
@@ -12,12 +15,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @NotBlank
+    @Size(min = 3, max = 25)
+    @Column(unique = true, nullable = false, length = 25)
     private String username;
 
+    @NotBlank
+    @Email
     @Column(unique = true, nullable = false)
     private String email;
 
+    @NotBlank
     @Column(nullable = false)
     private String password;
 
