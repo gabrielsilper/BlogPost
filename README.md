@@ -2,7 +2,7 @@
 
 Levantando requisitos para o backend do BlogPost.
 
-***Aqui estou exercitando o levantamento de requisitos para um sistema de blog. Eu com o tempo vou levar todos os pontos, os requisitos funcionais, as estórias de usuários e os critérios de aceitação.*** 
+***Aqui estou exercitando o levantamento de requisitos para um backend de um blog. Eu com o tempo vou levar todos os pontos, os requisitos funcionais, as estórias de usuários e os critérios de aceitação.***
 
 Manter usuário:
  - Cadastrar usuário;

@@ -17,4 +17,11 @@ public class ExceptionController {
                 .status(HttpStatus.NOT_FOUND)
                 .body(new ErrorMessageResponse(e.getMessage(), HttpStatus.NOT_FOUND.value()));
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorMessageResponse> generalExceptionHandler(Exception e) {
+        return ResponseEntity
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(new ErrorMessageResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value()));
+    }
 }
