@@ -1,6 +1,8 @@
 package com.github.gabrielsilper.BlogPost.services;
 
+import com.github.gabrielsilper.BlogPost.exceptions.EmailAlreadyExistsException;
 import com.github.gabrielsilper.BlogPost.exceptions.UserNotFoundException;
+import com.github.gabrielsilper.BlogPost.exceptions.UsernameAlreadyExistsException;
 import com.github.gabrielsilper.BlogPost.models.dtos.UserCreationDto;
 import com.github.gabrielsilper.BlogPost.models.entities.User;
 import com.github.gabrielsilper.BlogPost.repositories.UserRepository;
@@ -19,6 +21,14 @@ public class UserService {
     }
 
     public User create(UserCreationDto newUser) {
+        if (this.userRepository.existsByUsername(newUser.username())) {
+            throw new UsernameAlreadyExistsException();
+        }
+
+        if (this.userRepository.existsByEmail(newUser.email())) {
+            throw new EmailAlreadyExistsException();
+        }
+
         return this.userRepository.save(newUser.toEntity());
     }
 

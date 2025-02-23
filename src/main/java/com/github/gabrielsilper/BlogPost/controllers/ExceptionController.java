@@ -1,6 +1,8 @@
 package com.github.gabrielsilper.BlogPost.controllers;
 
+import com.github.gabrielsilper.BlogPost.exceptions.EmailAlreadyExistsException;
 import com.github.gabrielsilper.BlogPost.exceptions.UserNotFoundException;
+import com.github.gabrielsilper.BlogPost.exceptions.UsernameAlreadyExistsException;
 import com.github.gabrielsilper.BlogPost.models.dtos.ErrorMessageResponse;
 import com.github.gabrielsilper.BlogPost.utils.ErrorUtils;
 import jakarta.validation.ConstraintViolationException;
@@ -20,6 +22,17 @@ public class ExceptionController {
                 .status(HttpStatus.NOT_FOUND)
                 .body(new ErrorMessageResponse(e.getMessage(), HttpStatus.NOT_FOUND.value()));
     }
+
+    @ExceptionHandler({
+            UsernameAlreadyExistsException.class,
+            EmailAlreadyExistsException.class
+    })
+    public ResponseEntity<ErrorMessageResponse> AlreadyExistsExceptionHandler(Exception e) {
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(new ErrorMessageResponse(e.getMessage(), HttpStatus.CONFLICT.value()));
+    }
+
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorMessageResponse> methodArgumentNotValidExceptionHandler(MethodArgumentNotValidException e) {
