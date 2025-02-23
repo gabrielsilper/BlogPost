@@ -15,7 +15,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "is required")
     @Size(min = 3, max = 25)
     @Column(unique = true, nullable = false, length = 25)
     private String username;
