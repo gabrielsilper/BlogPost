@@ -35,7 +35,7 @@ public class UserServiceTests {
     @DisplayName("Should create a user")
     public void createUserTest() {
         // Given
-        UserCreationDto newUser = UserMock.getSimpleUserCreationDto();
+        User newUser = UserMock.getSimpleUser();
         User userWithId = UserMock.getSimpleUserWithId();
 
         Mockito.when(userRepository.save(any())).thenReturn(userWithId);
@@ -47,6 +47,7 @@ public class UserServiceTests {
         assertEquals(userWithId.getId(), createdUser.getId());
         assertEquals(userWithId.getUsername(), createdUser.getUsername());
         assertEquals(userWithId.getEmail(), createdUser.getEmail());
+        // TODO - Ver se a senha foi criptografada ou criar um teste para isso, pois como o valor do retorno é mockado, não é possível verificar.
         assertEquals(userWithId.getPassword(), createdUser.getPassword());
 
         Mockito.verify(userRepository, Mockito.times(1)).save(any());
@@ -56,30 +57,30 @@ public class UserServiceTests {
     @DisplayName("Should try to create a user with an existing username and throw UsernameAlreadyExistsException")
     public void createUserWithExistingUsernameTest() {
         // Given
-        UserCreationDto newUser = UserMock.getSimpleUserCreationDto();
+        User newUser = UserMock.getSimpleUser();
 
-        Mockito.when(userRepository.existsByUsername(newUser.username())).thenReturn(true);
+        Mockito.when(userRepository.existsByUsername(newUser.getUsername())).thenReturn(true);
 
         // Then
         assertThrows(UsernameAlreadyExistsException.class, () -> userService.create(newUser));
 
-        Mockito.verify(userRepository, Mockito.times(1)).existsByUsername(newUser.username());
+        Mockito.verify(userRepository, Mockito.times(1)).existsByUsername(newUser.getUsername());
     }
 
     @Test
     @DisplayName("Should try to create a user with an existing email and throw EmailAlreadyExistsException")
     public void createUserWithExistingEmailTest() {
         // Given
-        UserCreationDto newUser = UserMock.getSimpleUserCreationDto();
+        User newUser = UserMock.getSimpleUser();
 
-        Mockito.when(userRepository.existsByUsername(newUser.username())).thenReturn(false);
-        Mockito.when(userRepository.existsByEmail(newUser.email())).thenReturn(true);
+        Mockito.when(userRepository.existsByUsername(newUser.getUsername())).thenReturn(false);
+        Mockito.when(userRepository.existsByEmail(newUser.getEmail())).thenReturn(true);
 
         // Then
         assertThrows(EmailAlreadyExistsException.class, () -> userService.create(newUser));
 
-        Mockito.verify(userRepository, Mockito.times(1)).existsByUsername(newUser.username());
-        Mockito.verify(userRepository, Mockito.times(1)).existsByEmail(newUser.email());
+        Mockito.verify(userRepository, Mockito.times(1)).existsByUsername(newUser.getUsername());
+        Mockito.verify(userRepository, Mockito.times(1)).existsByEmail(newUser.getEmail());
     }
 
     @Test

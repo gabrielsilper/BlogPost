@@ -39,7 +39,7 @@ public class UserController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public UserDto createUser(@RequestBody @Valid UserCreationDto newUser) {
-        return this.userService.create(newUser).toDto();
+        return this.userService.create(newUser.toEntity()).toDto();
     }
 
     @PostMapping("/{id}/posts")
