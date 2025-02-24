@@ -1,5 +1,6 @@
 package com.github.gabrielsilper.BlogPost.services;
 
+import com.github.gabrielsilper.BlogPost.exceptions.PostNotFoundException;
 import com.github.gabrielsilper.BlogPost.exceptions.UserNotFoundException;
 import com.github.gabrielsilper.BlogPost.models.dtos.PostCreationDto;
 import com.github.gabrielsilper.BlogPost.models.entities.Post;
@@ -30,5 +31,9 @@ public class PostService {
 
     public List<Post> getAll(){
         return this.postRepository.findAll();
+    }
+
+    public Post getById(Long id) throws PostNotFoundException {
+        return this.postRepository.findById(id).orElseThrow(PostNotFoundException::new);
     }
 }

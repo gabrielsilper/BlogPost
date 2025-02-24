@@ -1,9 +1,11 @@
 package com.github.gabrielsilper.BlogPost.controllers;
 
+import com.github.gabrielsilper.BlogPost.exceptions.PostNotFoundException;
 import com.github.gabrielsilper.BlogPost.models.dtos.PostDto;
 import com.github.gabrielsilper.BlogPost.models.entities.Post;
 import com.github.gabrielsilper.BlogPost.services.PostService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,5 +27,10 @@ public class PostController {
                 .stream()
                 .map(Post::toDto)
                 .toList();
+    }
+
+    @GetMapping("/{id}")
+    public PostDto getPostById(@PathVariable Long id) throws PostNotFoundException {
+        return this.postService.getById(id).toDto();
     }
 }

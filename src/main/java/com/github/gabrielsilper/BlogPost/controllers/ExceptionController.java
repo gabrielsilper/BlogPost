@@ -1,6 +1,7 @@
 package com.github.gabrielsilper.BlogPost.controllers;
 
 import com.github.gabrielsilper.BlogPost.exceptions.EmailAlreadyExistsException;
+import com.github.gabrielsilper.BlogPost.exceptions.PostNotFoundException;
 import com.github.gabrielsilper.BlogPost.exceptions.UserNotFoundException;
 import com.github.gabrielsilper.BlogPost.exceptions.UsernameAlreadyExistsException;
 import com.github.gabrielsilper.BlogPost.models.dtos.ErrorMessageResponse;
@@ -15,7 +16,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ExceptionController {
     @ExceptionHandler({
-            UserNotFoundException.class
+            UserNotFoundException.class,
+            PostNotFoundException.class
     })
     public ResponseEntity<ErrorMessageResponse> notFoundExceptionHandler(Exception e) {
         return ResponseEntity
