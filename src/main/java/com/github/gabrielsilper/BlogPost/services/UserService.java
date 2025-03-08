@@ -76,4 +76,9 @@ public class UserService implements UserDetailsService {
 
         return userRepository.save(oldUser);
     }
+
+    public void delete(Long id) throws UserNotFoundException {
+        User user = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
+        userRepository.delete(user);
+    }
 }

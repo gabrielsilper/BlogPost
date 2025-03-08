@@ -52,4 +52,12 @@ public class UserController {
     public UserDto updateUser(@PathVariable Long id, @RequestBody UserCreationDto updatedUser) throws UserNotFoundException {
         return this.userService.update(id, updatedUser.toEntity()).toDto();
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteUser(@PathVariable Long id) throws UserNotFoundException {
+        this.userService.delete(id);
+    }
+
+    // criar futuramente uma propriedade e méto/do para mudar status de um usuário, para desativar, bloquear, etc.
 }
