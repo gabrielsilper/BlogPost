@@ -47,4 +47,9 @@ public class UserController {
     public PostDto createPost(@PathVariable Long id, @RequestBody PostCreationDto newPost) throws UserNotFoundException {
         return this.postService.create(id, newPost).toDto();
     }
+
+    @PutMapping("/{id}")
+    public UserDto updateUser(@PathVariable Long id, @RequestBody UserCreationDto updatedUser) throws UserNotFoundException {
+        return this.userService.update(id, updatedUser.toEntity()).toDto();
+    }
 }
