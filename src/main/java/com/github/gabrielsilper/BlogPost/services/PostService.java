@@ -6,6 +6,7 @@ import com.github.gabrielsilper.BlogPost.models.dtos.PostCreationDto;
 import com.github.gabrielsilper.BlogPost.models.entities.Post;
 import com.github.gabrielsilper.BlogPost.models.entities.User;
 import com.github.gabrielsilper.BlogPost.repositories.PostRepository;
+import com.github.gabrielsilper.BlogPost.utils.EntityUpdater;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +36,18 @@ public class PostService {
 
     public Post getById(Long id) throws PostNotFoundException {
         return this.postRepository.findById(id).orElseThrow(PostNotFoundException::new);
+    }
+
+    public Post update(Long id, Post updatedPost) throws PostNotFoundException {
+        Post oldPost = postRepository.findById(id).orElseThrow(PostNotFoundException::new);
+
+        EntityUpdater.mergeNotNullProperties(updatedPost, oldPost);
+
+        return postRepository.save(oldPost);
+    }
+
+    public void delete(Long id) throws PostNotFoundException {
+        Post post = postRepository.findById(id).orElseThrow(PostNotFoundException::new);
+        postRepository.delete(post);
     }
 }

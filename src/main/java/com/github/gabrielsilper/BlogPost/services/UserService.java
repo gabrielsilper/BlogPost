@@ -6,7 +6,6 @@ import com.github.gabrielsilper.BlogPost.exceptions.UsernameAlreadyExistsExcepti
 import com.github.gabrielsilper.BlogPost.models.entities.User;
 import com.github.gabrielsilper.BlogPost.repositories.UserRepository;
 import com.github.gabrielsilper.BlogPost.utils.EntityUpdater;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
