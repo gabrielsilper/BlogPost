@@ -4,32 +4,34 @@ Levantando requisitos para o backend do BlogPost.
 
 ***Aqui estou exercitando o levantamento de requisitos para um backend de um blog. Eu com o tempo vou levar todos os pontos, os requisitos funcionais, as estórias de usuários e os critérios de aceitação.***
 
+Login:
+ - [ ] Autenticar usuário;
+ - [ ] Gerar token de autenticação;
+ - [ ] Validar token de autenticação;
+ 
 Manter usuário:
- - Cadastrar usuário;
- - Atualizar usuário;
- - Deletar usuário;
+ - [x] Cadastrar usuário;
+ - [x] Atualizar usuário;
+ - [x] Deletar usuário;
 
 Manter post:
- - Cadastrar post;
- - Listar post;
- - Atualizar post;
- - Deletar post;
+ - [x] Cadastrar post;
+ - [x] Listar posts;
+ - [x] Listar post por id;
+ - [ ] Listar posts de um usuário;
+ - [x] Atualizar post;
+ - [x] Deletar post;
 
 Manter comentário:
- - Cadastrar comentário;
- - Listar comentário de um post;
- - Atualizar comentário;
- - Deletar comentário;
+ - [ ] Cadastrar comentário;
+ - [ ] Listar comentário de um post;
+ - [ ] Atualizar comentário;
+ - [ ] Deletar comentário;
 
 Manter curtida:
- - Cadastrar curtida;
- - Contar curtida de um post;
- - Deletar curtida;
-
-Login:
- - Autenticar usuário;
- - Gerar token de autenticação;
- - Validar token de autenticação;
+ - [ ] Cadastrar curtida;
+ - [ ] Contar curtida de um post;
+ - [ ] Deletar curtida;
 
 ## Requisitos Funcionais:
 
@@ -48,7 +50,10 @@ Login:
      - O sistema deve retornar uma mensagem de erro caso o e-mail não seja informado;
      - O sistema deve retornar uma mensagem de erro caso o username não seja informado;
      - O sistema deve retornar uma mensagem de erro caso a senha não seja informada;
+     - O sistema deve retornar uma mensagem de erro caso o username tenha menos de 3 caracteres;
+     - O sistema deve retornar uma mensagem de erro caso o username tenha mais de 25 caracteres
      - O sistema deve retornar uma mensagem de erro caso a senha tenha menos de 8 caracteres;
+     - O sistema deve retornar uma mensagem de erro caso a senha tenha mais de 25 caracteres;
 
  - RF02 - Atualizar usuário;
    - Descrição: O sistema deve permitir que um usuário autenticado atualize suas informações (username, e-mail e senha).
