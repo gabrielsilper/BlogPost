@@ -45,13 +45,14 @@ Manter curtida:
    - Critérios de aceitação:
      - O sistema deve permitir o cadastro de um usuário com username, e-mail e senha;
      - O sistema deve retornar o usuário cadastrado;
-     - O sistema deve retornar uma mensagem de erro caso o e-mail já esteja cadastrado;
-     - O sistema deve retornar uma mensagem de erro caso o e-mail seja inválido;
-     - O sistema deve retornar uma mensagem de erro caso o e-mail não seja informado;
+     - O sistema deve retornar uma mensagem de erro caso o username já esteja cadastrado;
      - O sistema deve retornar uma mensagem de erro caso o username não seja informado;
-     - O sistema deve retornar uma mensagem de erro caso a senha não seja informada;
      - O sistema deve retornar uma mensagem de erro caso o username tenha menos de 3 caracteres;
      - O sistema deve retornar uma mensagem de erro caso o username tenha mais de 25 caracteres
+     - O sistema deve retornar uma mensagem de erro caso o e-mail já esteja cadastrado;
+     - O sistema deve retornar uma mensagem de erro caso o e-mail não seja informado;
+     - O sistema deve retornar uma mensagem de erro caso o e-mail seja inválido;
+     - O sistema deve retornar uma mensagem de erro caso a senha não seja informada;
      - O sistema deve retornar uma mensagem de erro caso a senha tenha menos de 8 caracteres;
      - O sistema deve retornar uma mensagem de erro caso a senha tenha mais de 25 caracteres;
 
