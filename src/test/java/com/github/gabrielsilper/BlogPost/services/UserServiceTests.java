@@ -4,7 +4,6 @@ import com.github.gabrielsilper.BlogPost.exceptions.EmailAlreadyExistsException;
 import com.github.gabrielsilper.BlogPost.exceptions.UserNotFoundException;
 import com.github.gabrielsilper.BlogPost.exceptions.UsernameAlreadyExistsException;
 import com.github.gabrielsilper.BlogPost.mocks.UserMock;
-import com.github.gabrielsilper.BlogPost.models.dtos.UserCreationDto;
 import com.github.gabrielsilper.BlogPost.models.entities.User;
 import com.github.gabrielsilper.BlogPost.repositories.UserRepository;
 import org.junit.jupiter.api.DisplayName;

@@ -1,0 +1,1 @@
+- [ ] Ajustar a validação de senha, pois o validador está na classe modelo em vez do DTO, mudar o DTO de criação para ser uma classe em vez de ser um record e colocar a validação nessa classe.

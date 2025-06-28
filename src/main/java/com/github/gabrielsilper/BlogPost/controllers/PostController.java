@@ -1,7 +1,6 @@
 package com.github.gabrielsilper.BlogPost.controllers;
 
 import com.github.gabrielsilper.BlogPost.exceptions.PostNotFoundException;
-import com.github.gabrielsilper.BlogPost.models.dtos.PostCreationDto;
 import com.github.gabrielsilper.BlogPost.models.dtos.PostDto;
 import com.github.gabrielsilper.BlogPost.models.dtos.PostUpdateDto;
 import com.github.gabrielsilper.BlogPost.models.entities.Post;
