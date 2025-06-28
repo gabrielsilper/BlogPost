@@ -2,10 +2,6 @@ package com.github.gabrielsilper.BlogPost.models.entities;
 
 import com.github.gabrielsilper.BlogPost.models.dtos.UserDto;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,18 +18,12 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "is required")
-    @Size(min = 3, max = 25)
-    @Pattern(regexp = "\\S+", message = "cannot contain whitespace")
     @Column(unique = true, nullable = false, length = 25)
     private String username;
 
-    @NotBlank
-    @Email
     @Column(unique = true, nullable = false)
     private String email;
 
-    @NotBlank
     @Column(nullable = false)
     private String password;
 
