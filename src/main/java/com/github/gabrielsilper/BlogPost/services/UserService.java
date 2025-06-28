@@ -58,11 +58,11 @@ public class UserService implements UserDetailsService {
     public User update(Long id, User updatedUser) throws UserNotFoundException {
         User oldUser = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
 
-        if (Objects.nonNull(updatedUser.getUsername()) && this.userRepository.existsByUsername(updatedUser.getUsername())) {
+        if (Objects.nonNull(updatedUser.getUsername()) && !updatedUser.getUsername().equals(oldUser.getUsername()) && this.userRepository.existsByUsername(updatedUser.getUsername())) {
             throw new UsernameAlreadyExistsException();
         }
 
-        if (Objects.nonNull(updatedUser.getEmail()) && this.userRepository.existsByEmail(updatedUser.getEmail())) {
+        if (Objects.nonNull(updatedUser.getEmail()) && !updatedUser.getEmail().equals(oldUser.getEmail()) && this.userRepository.existsByEmail(updatedUser.getEmail())) {
             throw new EmailAlreadyExistsException();
         }
 

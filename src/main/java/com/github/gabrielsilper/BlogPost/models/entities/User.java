@@ -27,6 +27,9 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
 
+    @OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Post> posts;
+
     public User() {
     }
 

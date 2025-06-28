@@ -5,6 +5,7 @@ import com.github.gabrielsilper.BlogPost.models.dtos.PostCreationDto;
 import com.github.gabrielsilper.BlogPost.models.dtos.PostDto;
 import com.github.gabrielsilper.BlogPost.models.dtos.UserCreationDto;
 import com.github.gabrielsilper.BlogPost.models.dtos.UserDto;
+import com.github.gabrielsilper.BlogPost.models.dtos.UserUpdateDto;
 import com.github.gabrielsilper.BlogPost.models.entities.User;
 import com.github.gabrielsilper.BlogPost.services.PostService;
 import com.github.gabrielsilper.BlogPost.services.UserService;
@@ -49,7 +50,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public UserDto updateUser(@PathVariable Long id, @RequestBody UserCreationDto updatedUser) throws UserNotFoundException {
+    public UserDto updateUser(@PathVariable Long id, @RequestBody @Valid UserUpdateDto updatedUser) throws UserNotFoundException {
         return this.userService.update(id, updatedUser.toEntity()).toDto();
     }
 

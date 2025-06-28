@@ -10,7 +10,7 @@ import jakarta.validation.constraints.Size;
 public record UserCreationDto(
         @NotBlank(message = "is required") @Size(min = 3, max = 25, message = "must contain between 3 and 25 characters") @Pattern(regexp = "\\S+", message = "cannot contain whitespace") String username,
 
-        @NotBlank(message = "is required") @Email(message = "must be a valid email") String email,
+        @NotBlank(message = "is required") @Email(message = "must be a valid email", regexp = "^([a-z]){1,}([a-z0-9._-]){1,}([@]){1}([a-z]){2,}([.]){1}([a-z]){2,}([.]?){1}([a-z]?){2,}$") String email,
 
         @NotBlank(message = "is required") @Size(min = 8, max = 25, message = "must contain between 8 and 25 characters") String password) {
 
